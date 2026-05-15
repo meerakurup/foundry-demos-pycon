@@ -3,6 +3,7 @@
 .env.*
 !.env.template
 local.settings.json
+.azurite/
 
 # Python
 __pycache__/

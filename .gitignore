@@ -1,0 +1,18 @@
+# Local environment files
+.env
+.env.*
+!.env.template
+local.settings.json
+
+# Python
+__pycache__/
+*.py[cod]
+.python-version
+.venv/
+venv/
+
+# Tooling and OS files
+.pytest_cache/
+.streamlit/secrets.toml
+.DS_Store
+Thumbs.db

@@ -1,0 +1,51 @@
+package,category,monthly_downloads,stars,first_release_year,license,python3_only
+requests,HTTP,128500000,52400,2011,Apache-2.0,True
+boto3,Cloud,105000000,8900,2015,Apache-2.0,True
+urllib3,HTTP,98000000,3700,2008,MIT,True
+setuptools,Packaging,95000000,2400,2004,MIT,True
+typing-extensions,Typing,90000000,300,2017,PSF,True
+botocore,Cloud,88000000,1400,2014,Apache-2.0,True
+pip,Packaging,85000000,9400,2008,MIT,True
+certifi,Security,82000000,800,2011,MPL-2.0,True
+numpy,Data Science,78000000,27500,2006,BSD,True
+charset-normalizer,Text,75000000,500,2019,MIT,True
+idna,Networking,72000000,250,2013,BSD,True
+pandas,Data Science,65000000,44000,2009,BSD,True
+python-dateutil,Utilities,60000000,2200,2003,Apache-2.0,True
+pyyaml,Serialization,58000000,2500,2006,MIT,True
+packaging,Packaging,55000000,600,2014,Apache-2.0,True
+six,Compatibility,52000000,1000,2010,MIT,False
+cryptography,Security,50000000,6700,2014,Apache-2.0,True
+jinja2,Web,48000000,10200,2007,BSD,True
+markupsafe,Web,46000000,650,2010,BSD,True
+pydantic,Validation,44000000,21000,2017,MIT,True
+flask,Web,42000000,68500,2010,BSD,True
+click,CLI,40000000,15800,2014,BSD,True
+pillow,Imaging,38000000,12400,2012,HPND,True
+scipy,Data Science,35000000,13200,2001,BSD,True
+aiohttp,HTTP,33000000,15200,2013,Apache-2.0,True
+sqlalchemy,Database,31000000,9600,2006,MIT,True
+matplotlib,Data Science,29000000,20500,2003,PSF,True
+fastapi,Web,27000000,80000,2018,MIT,True
+django,Web,25000000,81000,2005,BSD,True
+scikit-learn,ML,23000000,60500,2007,BSD,True
+pytest,Testing,21000000,12400,2007,MIT,True
+httpx,HTTP,19000000,13500,2019,BSD,True
+rich,CLI,17000000,50500,2020,MIT,True
+uvicorn,Web,15500000,8600,2017,BSD,True
+celery,Task Queue,14000000,25000,2009,BSD,True
+redis,Database,12500000,12700,2008,MIT,True
+tornado,Web,11000000,21700,2009,Apache-2.0,True
+beautifulsoup4,Scraping,10500000,700,2004,MIT,True
+black,Formatting,9800000,39500,2018,MIT,True
+mypy,Typing,9200000,18800,2012,MIT,True
+ruff,Linting,8500000,35000,2022,MIT,True
+polars,Data Science,7800000,31000,2020,MIT,True
+streamlit,Data Science,7200000,36500,2019,Apache-2.0,True
+dask,Data Science,6500000,12600,2014,BSD,True
+typer,CLI,5800000,16500,2019,MIT,True
+httptools,HTTP,5200000,1200,2016,MIT,True
+orjson,Serialization,4800000,6200,2018,Apache-2.0,True
+arrow,Utilities,4200000,8800,2012,Apache-2.0,True
+textual,CLI,3500000,26000,2021,MIT,True
+litestar,Web,2800000,5600,2022,MIT,True

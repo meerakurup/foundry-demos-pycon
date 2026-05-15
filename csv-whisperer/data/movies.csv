@@ -1,0 +1,77 @@
+title,year,genre,director,rating_imdb,rating_rt,box_office_millions,budget_millions,runtime_min,language
+The Shawshank Redemption,1994,Drama,Frank Darabont,9.3,91,58.3,25.0,142,English
+The Dark Knight,2008,Action,Christopher Nolan,9.0,94,1006.0,185.0,152,English
+Inception,2010,Sci-Fi,Christopher Nolan,8.8,87,836.8,160.0,148,English
+Pulp Fiction,1994,Crime,Quentin Tarantino,8.9,92,213.9,8.5,154,English
+Forrest Gump,1994,Drama,Robert Zemeckis,8.8,71,678.2,55.0,142,English
+The Matrix,1999,Sci-Fi,Lana Wachowski,8.7,88,466.4,63.0,136,English
+Goodfellas,1990,Crime,Martin Scorsese,8.7,96,46.8,25.0,146,English
+Spirited Away,2001,Animation,Hayao Miyazaki,8.6,97,395.6,19.0,125,Japanese
+Parasite,2019,Thriller,Bong Joon-ho,8.5,99,266.1,11.4,132,Korean
+Interstellar,2014,Sci-Fi,Christopher Nolan,8.7,73,701.8,165.0,169,English
+The Godfather,1972,Crime,Francis Ford Coppola,9.2,97,287.0,6.0,175,English
+Fight Club,1999,Drama,David Fincher,8.8,79,101.2,63.0,139,English
+The Lord of the Rings: The Return of the King,2003,Fantasy,Peter Jackson,9.0,93,1146.0,94.0,201,English
+Whiplash,2014,Drama,Damien Chazelle,8.5,97,49.0,3.3,107,English
+The Grand Budapest Hotel,2014,Comedy,Wes Anderson,8.1,92,174.8,25.0,99,English
+Mad Max: Fury Road,2015,Action,George Miller,8.1,97,375.6,150.0,120,English
+Get Out,2017,Horror,Jordan Peele,7.7,98,255.5,4.5,104,English
+Everything Everywhere All at Once,2022,Sci-Fi,Daniel Kwan,7.8,93,141.2,25.0,139,English
+Coco,2017,Animation,Lee Unkrich,8.4,97,807.8,175.0,105,English
+The Social Network,2010,Drama,David Fincher,7.8,96,224.9,40.0,120,English
+Dune,2021,Sci-Fi,Denis Villeneuve,8.0,83,407.6,165.0,155,English
+La La Land,2016,Musical,Damien Chazelle,8.0,91,446.1,30.0,128,English
+Joker,2019,Drama,Todd Phillips,7.7,68,1074.3,55.0,122,English
+Avengers: Endgame,2019,Action,Anthony Russo,8.4,94,2797.5,356.0,181,English
+Spider-Man: Into the Spider-Verse,2018,Animation,Peter Ramsey,8.4,97,375.5,90.0,117,English
+Knives Out,2019,Mystery,Rian Johnson,7.9,97,312.9,40.0,131,English
+Oppenheimer,2023,Drama,Christopher Nolan,8.3,93,952.0,100.0,180,English
+The Batman,2022,Action,Matt Reeves,7.8,85,770.8,185.0,176,English
+Blade Runner 2049,2017,Sci-Fi,Denis Villeneuve,8.0,88,259.2,150.0,164,English
+Jojo Rabbit,2019,Comedy,Taika Waititi,7.9,80,90.3,14.0,108,English
+1917,2019,War,Sam Mendes,8.2,89,384.6,95.0,119,English
+The Witch,2015,Horror,Robert Eggers,6.9,91,40.4,3.5,92,English
+Moonlight,2016,Drama,Barry Jenkins,7.4,98,65.3,4.0,111,English
+Arrival,2016,Sci-Fi,Denis Villeneuve,7.9,94,203.4,47.0,116,English
+Hereditary,2018,Horror,Ari Aster,7.3,89,80.2,10.0,127,English
+The Farewell,2019,Drama,Lulu Wang,7.5,98,22.8,3.5,100,Mandarin
+Birdman,2014,Comedy,Alejandro Inarritu,7.7,92,103.2,18.0,119,English
+Roma,2018,Drama,Alfonso Cuaron,7.7,96,24.1,15.0,135,Spanish
+Top Gun: Maverick,2022,Action,Joseph Kosinski,8.2,96,1493.8,170.0,131,English
+Black Panther,2018,Action,Ryan Coogler,7.3,96,1347.6,200.0,134,English
+Toy Story 4,2019,Animation,Josh Cooley,7.7,97,1073.4,175.0,100,English
+The Power of the Dog,2021,Drama,Jane Campion,6.8,94,0.3,39.0,126,English
+Drive,2011,Crime,Nicolas Winding Refn,7.8,93,76.2,15.0,100,English
+John Wick,2014,Action,Chad Stahelski,7.4,86,86.0,20.0,101,English
+Barbie,2023,Comedy,Greta Gerwig,6.8,88,1441.8,145.0,114,English
+Poor Things,2023,Sci-Fi,Yorgos Lanthimos,7.8,92,117.8,35.0,141,English
+The Banshees of Inisherin,2022,Drama,Martin McDonagh,7.7,97,49.8,20.0,114,English
+Past Lives,2023,Romance,Celine Song,7.8,96,22.0,12.0,106,English
+Killers of the Flower Moon,2023,Crime,Martin Scorsese,7.6,93,157.0,200.0,206,English
+Saltburn,2023,Thriller,Emerald Fennell,7.0,71,62.3,20.0,131,English
+Inside Out,2015,Animation,Pete Docter,8.1,98,857.6,175.0,95,English
+The Northman,2022,Action,Robert Eggers,7.1,89,69.6,90.0,137,English
+Nope,2022,Sci-Fi,Jordan Peele,6.8,83,171.4,68.0,130,English
+Elvis,2022,Drama,Baz Luhrmann,7.3,78,287.3,85.0,159,English
+Marcel the Shell with Shoes On,2022,Animation,Dean Fleischer Camp,7.6,98,6.4,5.0,90,English
+Decision to Leave,2022,Thriller,Park Chan-wook,7.3,95,16.5,15.0,138,Korean
+Triangle of Sadness,2022,Comedy,Ruben Ostlund,7.3,72,34.5,8.6,147,English
+The Menu,2022,Thriller,Mark Mylod,7.2,88,79.6,30.0,107,English
+Glass Onion,2022,Mystery,Rian Johnson,7.1,93,13.3,40.0,139,English
+Aftersun,2022,Drama,Charlotte Wells,7.7,95,3.8,2.0,101,English
+Women Talking,2022,Drama,Sarah Polley,6.8,91,6.3,10.0,104,English
+Tár,2022,Drama,Todd Field,7.4,90,27.3,35.0,158,English
+The Whale,2022,Drama,Darren Aronofsky,7.7,65,54.8,3.0,117,English
+All Quiet on the Western Front,2022,War,Edward Berger,7.8,90,2.0,20.0,148,German
+Babylon,2022,Drama,Damien Chazelle,7.0,56,63.4,80.0,189,English
+Avatar: The Way of Water,2022,Sci-Fi,James Cameron,7.5,76,2320.3,350.0,192,English
+Puss in Boots: The Last Wish,2022,Animation,Joel Crawford,7.8,95,484.7,90.0,102,English
+Guillermo del Toro's Pinocchio,2022,Animation,Guillermo del Toro,7.6,97,1.4,35.0,117,English
+Turning Red,2022,Animation,Domee Shi,7.0,95,21.3,175.0,100,English
+Prey,2022,Action,Dan Trachtenberg,7.1,94,0.0,65.0,100,English
+RRR,2022,Action,S.S. Rajamouli,7.8,95,160.0,72.0,187,Telugu
+The Fabelmans,2022,Drama,Steven Spielberg,7.5,93,45.6,40.0,151,English
+Bones and All,2022,Horror,Luca Guadagnino,6.8,83,7.2,20.0,130,English
+She Said,2022,Drama,Maria Schrader,6.8,87,13.5,32.0,129,English
+Emily the Criminal,2022,Thriller,John Patton Ford,6.8,94,3.6,2.5,97,English
+Weird: The Al Yankovic Story,2022,Comedy,Eric Appel,6.6,83,0.0,8.0,108,English

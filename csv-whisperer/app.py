@@ -30,6 +30,41 @@ if "messages" not in st.session_state:
 if "dataset_loaded" not in st.session_state:
     st.session_state.dataset_loaded = None
 
+if "dataset_label" not in st.session_state:
+    st.session_state.dataset_label = None
+
+
+def decode_uploaded_csv(uploaded_file) -> str:
+    """Read an uploaded CSV as text, with a small fallback for common encodings."""
+    contents = uploaded_file.getvalue()
+    try:
+        return contents.decode("utf-8-sig")
+    except UnicodeDecodeError:
+        return contents.decode("latin-1")
+
+
+def load_dataset_into_chat(csv_text: str, dataset_label: str, dataset_key: str) -> None:
+    conversation = ["init"]  # placeholder; no previous_response_id yet
+
+    initial_prompt = (
+        f"Here is my CSV data from {dataset_label}:\n\n```csv\n"
+        + csv_text
+        + "\n```\n\n"
+        + "Please inspect it and give me a summary of what's in this dataset. "
+        + "Use code_interpreter to run pandas code to analyze it."
+    )
+
+    summary, images = run_turn(
+        st.session_state.client,
+        conversation,
+        initial_prompt,
+    )
+
+    st.session_state.conversation = conversation
+    st.session_state.dataset_loaded = dataset_key
+    st.session_state.dataset_label = dataset_label
+    st.session_state.messages = [{"role": "assistant", "content": summary, "images": images}]
+
 
 # --- Sidebar: dataset picker ---
 with st.sidebar:
@@ -38,25 +73,17 @@ with st.sidebar:
         if st.button(info["description"], key=key, use_container_width=True):
             with st.spinner(f"Loading {key}..."):
                 csv_text = load_csv_text(key)
-                conversation = ["init"]  # placeholder; no previous_response_id yet
+                load_dataset_into_chat(csv_text, info["description"], key)
+            st.rerun()
 
-                initial_prompt = (
-                    "Here is my CSV data:\n\n```csv\n"
-                    + csv_text
-                    + "\n```\n\n"
-                    + "Please inspect it and give me a summary of what's in this dataset. "
-                    + "Use code_interpreter to run pandas code to analyze it."
-                )
-
-                summary, images = run_turn(
-                    st.session_state.client,
-                    conversation,
-                    initial_prompt,
-                )
-
-                st.session_state.conversation = conversation
-                st.session_state.dataset_loaded = key
-                st.session_state.messages = [{"role": "assistant", "content": summary, "images": images}]
+    st.divider()
+    st.header("📤 Upload Your CSV")
+    uploaded_csv = st.file_uploader("Choose a CSV file", type="csv")
+    if uploaded_csv is not None:
+        if st.button("Analyze uploaded CSV", use_container_width=True):
+            with st.spinner(f"Loading {uploaded_csv.name}..."):
+                csv_text = decode_uploaded_csv(uploaded_csv)
+                load_dataset_into_chat(csv_text, uploaded_csv.name, f"uploaded:{uploaded_csv.name}")
             st.rerun()
 
     st.divider()
@@ -73,14 +100,20 @@ with st.sidebar:
         st.markdown("- Which director has the best avg rating?")
         st.markdown("- Show ROI by genre")
         st.markdown("- Best rated movies under $20M budget?")
+    elif st.session_state.dataset_loaded and str(st.session_state.dataset_loaded).startswith("uploaded:"):
+        st.markdown("- What columns are in this dataset?")
+        st.markdown("- Are there missing values or outliers?")
+        st.markdown("- Create a chart for the most important trend")
     else:
-        st.markdown("- *Pick a dataset to get started!*")
+        st.markdown("- *Pick a dataset or upload a CSV to get started!*")
 
 
 # --- Main chat area ---
 if not st.session_state.dataset_loaded:
-    st.info("👈 Pick a dataset from the sidebar to get started!")
+    st.info("👈 Pick a sample dataset or upload your own CSV from the sidebar to get started!")
 else:
+    st.caption(f"Current dataset: {st.session_state.dataset_label}")
+
     # Display chat history
     for msg in st.session_state.messages:
         with st.chat_message(msg["role"]):

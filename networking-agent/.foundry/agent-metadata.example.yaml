@@ -1,0 +1,27 @@
+defaultEnvironment: dev
+environments:
+  dev:
+    projectEndpoint: "https://mkurup-test-resource.services.ai.azure.com/api/projects/mkurup-test"
+    agentName: network-isolation-expert
+    definitionFile: ../agent.yml
+    workiqConnections:
+      teams:
+        projectConnectionId: WorkIQTeams
+        mcpEndpoint: "https://agent365.svc.cloud.microsoft/agents/servers/mcp_TeamsServer"
+      onedrive:
+        projectConnectionId: WorkIQOneDrive
+        mcpEndpoint: "https://agent365.svc.cloud.microsoft/agents/servers/mcp_OneDriveRemoteServer"
+      mail:
+        projectConnectionId: WorkIQMail
+        mcpEndpoint: "https://agent365.svc.cloud.microsoft/agents/servers/mcp_MailTools"
+    disabledToolboxes:
+      workiqToolbox:
+        name: meera-workiq-toolbox
+        version: "1"
+        reason: "Custom Logic App source meeraworkiqmcp returns HTTP 403 during tool enumeration."
+        mcpEndpoint: "https://mkurup-test-resource.services.ai.azure.com/api/projects/mkurup-test/toolboxes/meera-workiq-toolbox/versions/1/mcp?api-version=v1"
+    diagramSupport:
+      format: mermaid
+      implementation: prompt-native
+      publicRenderer: none
+      note: "Agent emits fenced Mermaid blocks; render client-side or through a private renderer for confidential diagrams."

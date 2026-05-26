@@ -9,149 +9,236 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: #fafafa;
+            background: #f7f4fa;
             min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             padding: 2rem;
+            color: #191225;
         }
-        .card {
+        .page {
+            max-width: 1180px;
+            margin: 0 auto;
             background: white;
-            border-radius: 20px;
-            border: 1px solid #eee;
-            box-shadow: 0 4px 24px rgba(0,0,0,0.06);
-            max-width: 680px;
-            width: 100%;
+            border: 1px solid #eee6f5;
+            border-radius: 28px;
             overflow: hidden;
+            box-shadow: 0 20px 60px rgba(41, 20, 57, 0.12);
         }
         .hero {
-            width: 100%;
-            height: 400px;
-            object-fit: cover;
-            background: #f5f5f5;
+            display: grid;
+            grid-template-columns: 1fr 0.9fr;
+            min-height: 420px;
         }
-        .hero-placeholder {
-            width: 100%;
-            height: 320px;
+        .hero-copy {
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .eyebrow {
+            color: #7B2D8E;
+            font-size: 0.76rem;
+            font-weight: 800;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+        h1 {
+            font-size: 3rem;
+            line-height: 0.98;
+            letter-spacing: -0.06em;
+            margin-bottom: 1rem;
+        }
+        .subheadline {
+            color: #5f5668;
+            font-size: 1.08rem;
+            line-height: 1.65;
+            margin-bottom: 1.6rem;
+        }
+        .badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.8rem;
+        }
+        .badge {
+            background: #f5edf9;
+            border: 1px solid #ead8f2;
+            color: #69307b;
+            border-radius: 999px;
+            padding: 0.45rem 0.7rem;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+        .button {
+            border: none;
+            border-radius: 12px;
+            padding: 0.9rem 1.25rem;
+            font-weight: 800;
+            font-size: 0.95rem;
+            cursor: pointer;
+        }
+        .primary {
+            background: linear-gradient(135deg, #7B2D8E, #B667D8);
+            color: white;
+            box-shadow: 0 10px 24px rgba(123, 45, 142, 0.28);
+        }
+        .secondary {
+            background: #f8f4fb;
+            color: #683278;
+            border: 1px solid #ead8f2;
+        }
+        .hero-visual {
             background: linear-gradient(135deg, #7B2D8E, #C084FC);
+            min-height: 420px;
+            position: relative;
+        }
+        .hero-visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .placeholder {
+            position: absolute;
+            inset: 0;
             display: flex;
             align-items: center;
             justify-content: center;
-            position: relative;
-            overflow: hidden;
+            color: rgba(255,255,255,0.72);
+            font-weight: 800;
+            font-size: 1.1rem;
+            text-align: center;
+            padding: 2rem;
         }
-        .hero-placeholder .pattern {
+        .placeholder::before {
+            content: "";
             position: absolute;
             inset: 0;
-            opacity: 0.08;
+            opacity: 0.1;
             background-image:
-                radial-gradient(circle at 20% 50%, white 1px, transparent 1px),
-                radial-gradient(circle at 80% 20%, white 1px, transparent 1px),
-                radial-gradient(circle at 60% 80%, white 1.5px, transparent 1.5px);
-            background-size: 60px 60px, 80px 80px, 50px 50px;
+                radial-gradient(circle at 20% 20%, white 1px, transparent 1px),
+                radial-gradient(circle at 80% 40%, white 1.4px, transparent 1.4px),
+                radial-gradient(circle at 45% 85%, white 1px, transparent 1px);
+            background-size: 52px 52px, 78px 78px, 62px 62px;
         }
-        .hero-placeholder .label {
+        .placeholder span {
             position: relative;
-            z-index: 1;
-            color: rgba(255,255,255,0.7);
-            font-size: 1rem;
-            font-weight: 500;
         }
-        .content {
-            padding: 2.5rem;
+        .section {
+            padding: 2.5rem 3rem;
+            border-top: 1px solid #f0e8f6;
         }
-        .tagline {
-            color: #7B2D8E;
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            margin-bottom: 0.5rem;
+        .section h2 {
+            font-size: 1.4rem;
+            letter-spacing: -0.03em;
+            margin-bottom: 1rem;
         }
-        h1 {
-            font-size: 2rem;
-            font-weight: 800;
-            color: #1a1a2e;
-            margin-bottom: 0.75rem;
-            line-height: 1.15;
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
         }
-        .description {
-            font-size: 1rem;
-            color: #666;
-            line-height: 1.7;
-            margin-bottom: 2rem;
+        .card {
+            background: #fbf8fd;
+            border: 1px solid #f0e5f7;
+            border-radius: 18px;
+            padding: 1.1rem;
+            color: #45394f;
+            line-height: 1.5;
         }
-        .features {
+        .proof-list {
             list-style: none;
-            margin-bottom: 2rem;
-        }
-        .features li {
-            padding: 0.6rem 0;
-            border-bottom: 1px solid #f5f0f8;
-            color: #333;
-            font-size: 0.95rem;
-            display: flex;
-            align-items: center;
+            display: grid;
             gap: 0.75rem;
         }
-        .features li:last-child { border-bottom: none; }
-        .features li::before {
-            content: "✦";
-            color: #7B2D8E;
-            font-size: 0.9rem;
+        .proof-list li {
+            border-left: 3px solid #9B59B6;
+            padding: 0.25rem 0 0.25rem 0.9rem;
+            color: #45394f;
+            line-height: 1.55;
         }
-        .cta-button {
-            display: inline-block;
-            background: linear-gradient(135deg, #7B2D8E, #9B59B6);
-            color: white;
-            padding: 0.85rem 2rem;
-            border-radius: 10px;
-            font-size: 1rem;
-            font-weight: 600;
-            text-decoration: none;
-            transition: transform 0.15s, box-shadow 0.15s;
-            cursor: pointer;
-            border: none;
-        }
-        .cta-button:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 8px 20px rgba(123, 45, 142, 0.3);
+        .positioning {
+            color: #5f5668;
+            font-size: 1.02rem;
+            line-height: 1.7;
         }
         .footer {
-            text-align: center;
-            padding: 1.25rem;
-            color: #bbb;
-            font-size: 0.7rem;
+            padding: 1.25rem 3rem;
+            border-top: 1px solid #f0e8f6;
+            color: #9a8ea5;
+            font-size: 0.78rem;
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+        @media (max-width: 800px) {
+            .hero { grid-template-columns: 1fr; }
+            .hero-copy { padding: 2rem; }
+            h1 { font-size: 2.25rem; }
+            .grid { grid-template-columns: 1fr; }
+            .section { padding: 2rem; }
+            .footer { flex-direction: column; padding: 1.25rem 2rem; }
         }
     </style>
 </head>
 <body>
-    <div>
-        <div class="card">
-            {% if image_url %}
-            <img class="hero" src="{{ image_url }}" alt="{{ product_name }}">
-            {% else %}
-            <div class="hero-placeholder">
-                <div class="pattern"></div>
-                <span class="label">{{ product_name }}</span>
+    <main class="page">
+        <section class="hero">
+            <div class="hero-copy">
+                <div class="eyebrow">{{ eyebrow }}</div>
+                <h1>{{ headline }}</h1>
+                <p class="subheadline">{{ subheadline }}</p>
+                <div class="badges">
+                    <span class="badge">Built for {{ audience }}</span>
+                    <span class="badge">{{ industry }}</span>
+                    <span class="badge">Enterprise-ready</span>
+                </div>
+                <div class="actions">
+                    <button class="button primary">{{ cta_primary }}</button>
+                    <button class="button secondary">{{ cta_secondary }}</button>
+                </div>
             </div>
-            {% endif %}
-            <div class="content">
-                <div class="tagline">{{ tagline }}</div>
-                <h1>{{ product_name }}</h1>
-                <p class="description">{{ description }}</p>
-                <ul class="features">
-                    {% for feature in features %}
-                    <li>{{ feature }}</li>
-                    {% endfor %}
-                </ul>
-                <button class="cta-button">{{ cta }}</button>
+            <div class="hero-visual">
+                {% if image_url %}
+                <img src="{{ image_url }}" alt="{{ product_name }} hero image">
+                {% else %}
+                <div class="placeholder"><span>{{ product_name }}</span></div>
+                {% endif %}
             </div>
-        </div>
+        </section>
+
+        <section class="section">
+            <h2>{{ tagline }}</h2>
+            <p class="positioning">{{ positioning }}</p>
+        </section>
+
+        <section class="section">
+            <h2>Customer benefits</h2>
+            <div class="grid">
+                {% for benefit in benefits %}
+                <div class="card">{{ benefit }}</div>
+                {% endfor %}
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Why developers can build with it</h2>
+            <ul class="proof-list">
+                {% for proof in developer_proof_points %}
+                <li>{{ proof }}</li>
+                {% endfor %}
+            </ul>
+        </section>
+
         <div class="footer">
-            Generated with GPT-5.4 + MAI-Image-2e on Azure AI Foundry
+            <span>Generated with GPT-5.4 + MAI-Image-2e on Azure AI Foundry</span>
+            <span>Structured output ready for CMS, CRM, and sales workflows</span>
         </div>
-    </div>
+    </main>
 </body>
 </html>

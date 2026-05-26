@@ -4,6 +4,7 @@
 !.env.template
 local.settings.json
 .azurite/
+_private/
 
 # Python
 __pycache__/

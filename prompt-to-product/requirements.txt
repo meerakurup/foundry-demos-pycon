@@ -3,3 +3,4 @@ azure-identity
 streamlit
 jinja2
 python-dotenv
+requests

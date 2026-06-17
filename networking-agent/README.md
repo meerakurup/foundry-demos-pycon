@@ -2,91 +2,92 @@
 
 Foundry prompt-agent definition for a Microsoft Foundry network isolation expert.
 
-## Runtime File
+## What This Agent Does
 
-- `agent.yml` is the deployable Foundry prompt-agent definition.
-- The agent is intentionally self-contained: the full behavior and core domain knowledge live in the `instructions` block because Foundry prompt agents do not automatically load local Markdown files.
-- `model` is set to `gpt-5`, which is deployed in the `mkurup-test-resource` Foundry resource. Change this value if you want to use a different model deployment.
-- `temperature` is intentionally omitted because the deployed `gpt-5` model does not support it.
-- The agent uses direct WorkIQ catalog MCP connections for Teams, OneDrive, and Mail. The custom Logic App toolbox source is excluded until its 403 auth issue is fixed.
-- Mermaid diagram support is implemented in the prompt instructions. The agent emits fenced `mermaid` blocks that render in Mermaid-compatible clients without sending private content to a public renderer.
+Answers architecture questions, triages customer blockers, and drafts new bug/feature work item templates for the E2E Network Isolation investment theme.
 
-## Source Reference Files
+## Tools
 
-- `instructions.md` is the original source/reference prompt material.
-- `skills/SKILL.md` is the original domain knowledge source used to build the embedded instructions.
-- Updating either reference file does not change the deployed agent until the relevant content is copied into `agent.yml`.
+| Tool | Type | Endpoint | Auth |
+|------|------|----------|------|
+| **MicrosoftLearn** | MCP | `https://learn.microsoft.com/api/mcp` | None (public) |
+| **File search** | file_search | Vector store `vs_d2E3svfl32bIIFybF508tmd7` | Project-scoped |
 
-## Deploy Shape
+## Files
 
-The Foundry prompt-agent definition should keep this shape:
+| File | Purpose |
+|------|---------|
+| `agent.yml` | Deployable Foundry prompt-agent definition (instructions + tools) |
+| `skills/SKILL.md` | Domain knowledge uploaded to the vector store for file search |
+| `instructions.md` | Reference prompt material (not auto-loaded by Foundry) |
+| `agent-metadata.example.yaml` | Template for local deployment metadata |
+| `create_vector_store.py` | Script to create/update the file search vector store |
 
-```yaml
-kind: prompt
-name: network-isolation-expert
-model: gpt-5
-instructions: |
-  ...self-contained system instructions...
+## Prerequisites
+
+1. **An Azure subscription** with access to [Microsoft Foundry](https://ai.azure.com).
+2. **A Foundry project** of your own (the reference deployment uses `mkurup-test` under `mkurup-test-resource`, but you should use yours).
+3. **Model**: a `gpt-5` deployment in your project. If you deploy a different model, update the `model:` field in `agent.yml`.
+4. **Azure CLI** signed in (`az login`) so `DefaultAzureCredential` can authenticate, with a role such as **Azure AI Developer** on the project.
+5. **Python 3.9+** and the packages in `requirements.txt`.
+
+## Deploy It Yourself (with your own Foundry endpoint)
+
+The scripts currently hardcode the reference project endpoint. To deploy into your own project, follow these steps.
+
+### 1. Get your project endpoint
+
+In the Foundry portal, open your project → **Overview** → copy the **Project endpoint**. It looks like:
+
+```
+https://<your-resource>.services.ai.azure.com/api/projects/<your-project>
 ```
 
-Avoid `instructions: file:...` and `knowledgeFiles:` for this package unless the target deployment tool explicitly documents support for them.
+### 2. Authenticate and install dependencies
 
-## WorkIQ Tools
-
-The deployed agent uses the working catalog MCP project connections directly:
-
-```yaml
-tools:
-  - type: mcp
-    server_label: WorkIQTeams
-    server_url: https://agent365.svc.cloud.microsoft/agents/servers/mcp_TeamsServer
-    project_connection_id: WorkIQTeams
-    require_approval: always
-  - type: mcp
-    server_label: WorkIQOneDrive
-    server_url: https://agent365.svc.cloud.microsoft/agents/servers/mcp_OneDriveRemoteServer
-    project_connection_id: WorkIQOneDrive
-    require_approval: always
-  - type: mcp
-    server_label: WorkIQMail
-    server_url: https://agent365.svc.cloud.microsoft/agents/servers/mcp_MailTools
-    project_connection_id: WorkIQMail
-    require_approval: always
+```bash
+az login
+pip install -r requirements.txt
 ```
 
-The `meera-workiq-toolbox` wrapper endpoint is not used by the deployed agent because the toolbox version includes a custom Logic App MCP source, `meeraworkiqmcp`, that currently returns HTTP 403 during tool enumeration.
+### 3. Point the scripts at your endpoint
+
+Both scripts read the project endpoint from the `ENDPOINT` environment variable (falling back to the reference project if unset). Set it to your own endpoint:
+
+```bash
+# PowerShell
+$env:ENDPOINT = "https://<your-resource>.services.ai.azure.com/api/projects/<your-project>"
+
+# bash/zsh
+export ENDPOINT="https://<your-resource>.services.ai.azure.com/api/projects/<your-project>"
+```
+
+### 4. Create your own vector store
+
+Run the script to upload `skills/SKILL.md` and `skills/DIAGRAMS.md` into a new vector store in your project:
+
+```bash
+python create_vector_store.py
+```
+
+It prints a new vector store ID (e.g. `vs_...`). Copy that ID into `agent.yml` under `tools` → `file_search` → `vector_store_ids`, replacing the existing `vs_d2E3svfl32bIIFybF508tmd7` value.
+
+### 5. Deploy the agent
+
+```bash
+python deploy_agent.py
+```
+
+This creates the `network-isolation-expert` prompt agent (instructions + tools from `agent.yml`) in your project. Open the Foundry playground to test it.
+
+### Alternative: deploy via the portal
+
+You can skip the scripts entirely: in the Foundry portal go to **Agents → + New agent → Prompt agent**, then paste the contents of `agent.yml`. You'll still need to create a vector store (step 4) and update the `vector_store_ids` in the pasted definition with your own ID.
 
 ## Mermaid Diagrams
 
-The agent can produce visual diagrams by returning Mermaid source in Markdown:
-
-````markdown
-```mermaid
-flowchart LR
-  Client[Client] --> PrivateEndpoint[Private endpoint]
-  PrivateEndpoint --> Foundry[Microsoft Foundry]
-  Foundry --> Storage[Storage / Search / Key Vault]
-```
-````
-
-This is intentionally prompt-native rather than an MCP tool because public Mermaid renderers are HTTP services, not Foundry MCP servers. For confidential diagrams, keep rendering client-side or use a private renderer. Do not send customer architecture, tenant IDs, private IPs, or endpoint names to public rendering services.
-
-## WorkIQ Toolbox Pending Auth
-
-The toolbox MCP endpoint is:
-
-```yaml
-tools:
-  - type: mcp
-    server_label: meera-workiq-toolbox
-    server_url: https://mkurup-test-resource.services.ai.azure.com/api/projects/mkurup-test/toolboxes/meera-workiq-toolbox/versions/1/mcp?api-version=v1
-    headers:
-      Foundry-Features: Toolboxes=V1Preview
-    require_approval: always
-```
-
-Do not commit bearer tokens. A deployment with the toolbox MCP tool but no `Authorization` header failed invocation with a 401 from the toolbox endpoint. The deployed agent uses direct WorkIQ catalog project connections instead.
+The agent produces Mermaid source in fenced code blocks. Render client-side or in any Mermaid-compatible viewer. Do not send customer architecture details to public rendering services.
 
 ## Optional Foundry Metadata
 
-Use `.foundry/agent-metadata.example.yaml` as the starting point for local deployment metadata. Copy it to `.foundry/agent-metadata.yaml` and fill in your project endpoint when you are ready to deploy or invoke the agent from tooling.
+Copy `agent-metadata.example.yaml` to `.foundry/agent-metadata.yaml` and fill in your project endpoint for local tooling.

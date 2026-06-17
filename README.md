@@ -20,6 +20,10 @@ A product ideation agent that turns a short product description into launch-read
 
 **Tech stack:** Microsoft Foundry, GPT-5.4 for structured marketing copy, MAI-Image-2e for image generation, Azure AI Projects, OpenAI client, Python, Streamlit, Jinja2 templates, Azure `DefaultAzureCredential` authentication.
 
+### [My-Shazam](my-shazam/README.md)
+
+A simple speech-to-song app that transcribes uploaded audio with MAI-Transcribe-1.5, then uses gpt-4.5-mini with web search to identify the song and artist.
+
 ### [PyPI Dependency Auditor](pypi-advisor/README.md)
 
 A dependency auditing agent that reviews a `requirements.txt`, checks pinned packages for stale versions and known vulnerabilities, and produces a practical remediation report.
